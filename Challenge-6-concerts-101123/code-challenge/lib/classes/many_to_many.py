@@ -83,7 +83,12 @@ class Concert:
         return self.band.hometown == self.venue.city
 
     def introduction(self):
-        return f'Hello {self.venue.city}!!!!! We are {self.band.name}and were from {self.band.hometown}'
+        concert_list = [concert for concert in Concert.all if concert.band is self]
+        introduction = [f'Hello {self.venue.city}!!!!! We are {self.band.name}and we are from {self.band.hometown}']
+        if len(concert_list) < 0:
+            return None
+        else:
+            return introduction
 
     @date.setter
     def date(self, value):
