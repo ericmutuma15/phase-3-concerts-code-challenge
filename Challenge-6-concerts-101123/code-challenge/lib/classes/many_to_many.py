@@ -10,10 +10,11 @@ class Band:
 
     @name.setter
     def name(self, value):
-        if isinstance(value, str) and len(value) > 0:
-            self._name = value
-        else:
+        if not isinstance(value, str) and len(value) > 0:
             raise ValueError('name must a non-empty string.')
+        if not len(value) > 0:
+            raise ValueError('name must a non-empty string.')
+        self._name = value
 
     @property
     def hometown(self):
@@ -82,7 +83,7 @@ class Concert:
         return self.band.hometown == self.venue.city
 
     def introduction(self):
-        return f'Was sup {self.venue.city}! We are {self.band.name} from {self.band.hometown}'
+        return f'Hello {self.venue.city}!!!!! We are {self.band.name}and were from {self.band.hometown}'
 
     @date.setter
     def date(self, value):
